@@ -1,4 +1,4 @@
-$(document).ready(function() {
+// $(document).ready(function() {
 
 	//what does this do?
 	var convert_value_to_string = function(value) {
@@ -19,6 +19,7 @@ $(document).ready(function() {
 	}
 
 	//what does this do?
+	//will create a deck of 52 cards, 13 of each suit
 	var deck = [];
 	var suits = ['hearts', 'diamonds', 'spades', 'clubs'];
 	for (var i = 0; i<suits.length; i++) {
@@ -29,6 +30,7 @@ $(document).ready(function() {
 	}
 	
 	//what does this do?
+
 	var shuffle = function(array) { 
 		var copy = [];
 		var n = array.length; 
@@ -45,14 +47,36 @@ $(document).ready(function() {
 	
 	//Now call the shuffle function and save the result of what shuffle returns into your deck variable
 	
+  deck = shuffle(deck);
+
 	var cards_player_1 = [];
 	var cards_player_2 = [];
 	// write a function called deal that will evently divide the deck up between the two players
 	
+	var deal = function(deck) {
+		for (var i = 0; i < 26; i++) {
+			cards_player_1.push(deck.shift());
+			console.log(deck.length);
+
+			cards_player_2.push(deck.shift());
+			console.log(deck.length);
+		}
+	}
 	
-	//create a function (algorithm) called "war" that takes two cards as parameters, compares them and returns a winner. A tie should return false.
-	var war = function(){
+
+	//create a function (algorithm) called "war" that takes two cards as parameters, 
+	//compares them and returns a winner. A tie should return false.
 	
+	var war = function(card1, card2) {
+    if (card1 > card2) {
+    	return card1;
+    }
+    else if (card2 > card1) {
+    	return card2;
+    }
+	  else {
+	  	return false;
+	  }
 		
 	}
 	
@@ -82,7 +106,7 @@ $(document).ready(function() {
 
 	advance();
 	
-	$(".btn").click(function() {
-		play();
-	});
-});
+// 	$(".btn").click(function() {
+// 		play();
+// 	});
+// });
